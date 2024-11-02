@@ -1,0 +1,14 @@
+<h1>¡Primera compra del producto <%= @producto.nombre %>!</h1>
+
+<p>Hola <%= @administrador.nombre %>,</p>
+
+<p>El producto "<%= @producto.nombre %>" ha sido comprado por primera vez por <%= @comprador.nombre %>.</p>
+
+<p>Detalles del producto:</p>
+<ul>
+  <li>Descripción: <%= @producto.descripcion %></li>
+  <li>Precio: <%= @producto.precio %></li>
+</ul>
+
+<p>Saludos,</p>
+<p>Equipo de DesafioSMS</p>

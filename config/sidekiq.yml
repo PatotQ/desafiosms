@@ -1,0 +1,7 @@
+:concurrency: 5
+:queues:
+  - default
+:schedule:
+  enviar_reporte_compras_diario:
+    cron: "0 0 * * *"
+    class: "ReporteComprasDiarioWorker"

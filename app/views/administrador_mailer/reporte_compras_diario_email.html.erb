@@ -1,0 +1,21 @@
+<h1>Reporte de Compras del Día Anterior</h1>
+
+<p>Hola <%= @administrador.nombre %>,</p>
+
+<p>A continuación se muestra el resumen de las compras realizadas en la tienda el día anterior:</p>
+
+<% @reporte.each do |producto_info| %>
+  <h2>Producto: <%= producto_info[:producto] %></h2>
+  <p>Total Vendido: <%= producto_info[:cantidad_total] %></p>
+  
+  <ul>
+    <% producto_info[:detalles_compras].each do |detalle| %>
+      <li>
+        Cliente: <%= detalle[:cliente] %>, Cantidad: <%= detalle[:cantidad] %>, Fecha: <%= detalle[:fecha].strftime('%Y-%m-%d %H:%M') %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p>Saludos,</p>
+<p>Equipo de DesafioSMS</p>
