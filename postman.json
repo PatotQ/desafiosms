@@ -1,0 +1,224 @@
+{
+    "info": {
+      "name": "Productos API Collection",
+      "description": "Colección de Postman para probar las APIs del ProductosController.",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Productos API",
+        "item": [
+          {
+            "name": "Index - Obtener todos los productos",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }
+              ],
+              "url": {
+                "raw": "{{base_url}}/productos",
+                "host": ["{{base_url}}"],
+                "path": ["productos"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Show - Obtener un producto por ID",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }
+              ],
+              "url": {
+                "raw": "{{base_url}}/productos/:id",
+                "host": ["{{base_url}}"],
+                "path": ["productos", ":id"],
+                "variable": [
+                  {
+                    "key": "id",
+                    "value": "1"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Productos Más Comprados",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }
+              ],
+              "url": {
+                "raw": "{{base_url}}/productos_mas_comprados",
+                "host": ["{{base_url}}"],
+                "path": ["productos_mas_comprados"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Productos Más Recaudados",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }
+              ],
+              "url": {
+                "raw": "{{base_url}}/productos_mas_recaudados",
+                "host": ["{{base_url}}"],
+                "path": ["productos_mas_recaudados"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Buscar Compras",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }
+              ],
+              "url": {
+                "raw": "{{base_url}}/buscar_compras",
+                "host": ["{{base_url}}"],
+                "path": ["buscar_compras"],
+                "query": [
+                  {
+                    "key": "fecha_desde",
+                    "value": "2023-01-01"
+                  },
+                  {
+                    "key": "fecha_hasta",
+                    "value": "2023-12-31"
+                  },
+                  {
+                    "key": "categoria_id",
+                    "value": "2"
+                  },
+                  {
+                    "key": "cliente_id",
+                    "value": "5"
+                  },
+                  {
+                    "key": "administrador_id",
+                    "value": "3"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Compras por Granularidad",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }
+              ],
+              "url": {
+                "raw": "{{base_url}}/compras_por_granularidad",
+                "host": ["{{base_url}}"],
+                "path": ["compras_por_granularidad"],
+                "query": [
+                  {
+                    "key": "fecha_desde",
+                    "value": "2023-01-01T00:00:00Z"
+                  },
+                  {
+                    "key": "fecha_hasta",
+                    "value": "2023-12-31T23:59:59Z"
+                  },
+                  {
+                    "key": "categoria_id",
+                    "value": "2"
+                  },
+                  {
+                    "key": "cliente_id",
+                    "value": "5"
+                  },
+                  {
+                    "key": "administrador_id",
+                    "value": "3"
+                  },
+                  {
+                    "key": "granularidad",
+                    "value": "dia"
+                  }
+                ]
+              }
+            },
+            "response": []
+          }
+        ]
+      }
+    ],
+    "variable": [
+      {
+        "key": "base_url",
+        "value": "http://localhost:3000",
+        "type": "default"
+      },
+      {
+        "key": "auth_token",
+        "value": "YOUR_AUTH_TOKEN_HERE",
+        "type": "default"
+      }
+    ]
+  }

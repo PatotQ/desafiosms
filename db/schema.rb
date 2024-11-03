@@ -19,15 +19,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_02_221727) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "categoria", force: :cascade do |t|
+  create_table "categorias", force: :cascade do |t|
     t.string "nombre"
+    t.integer "administrador_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["administrador_id"], name: "index_categorias_on_administrador_id"
   end
 
-  create_table "categoria_productos", id: false, force: :cascade do |t|
-    t.integer "categorium_id", null: false
+  create_table "categorias_productos", id: false, force: :cascade do |t|
+    t.integer "categoria_id", null: false
     t.integer "producto_id", null: false
+    t.index ["categoria_id", "producto_id"], name: "index_categorias_productos_on_categoria_id_and_producto_id"
+    t.index ["producto_id", "categoria_id"], name: "index_categorias_productos_on_producto_id_and_categoria_id"
   end
 
   create_table "clientes", force: :cascade do |t|
@@ -56,8 +60,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_02_221727) do
     t.string "nombre"
     t.text "descripcion"
     t.decimal "precio"
+    t.integer "administrador_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["administrador_id"], name: "index_productos_on_administrador_id"
   end
 
+  add_foreign_key "categorias", "administradors"
+  add_foreign_key "productos", "administradors"
 end

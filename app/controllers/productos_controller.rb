@@ -17,7 +17,9 @@ class ProductosController < ApplicationController
 
   def productos_mas_comprados
     @productos_por_categoria = Rails.cache.fetch("productos_mas_comprados", expires_in: 1.hour) do
-      Categoria.all.map do |categoria|
+      Categoria.includes(:productos)
+               .all
+               .map do |categoria|
         productos = categoria.productos
                             .joins(:compras)
                             .select('productos.*, SUM(compras.cantidad) as total_compras')
@@ -37,7 +39,9 @@ class ProductosController < ApplicationController
 
   def productos_mas_recaudados
     @productos_por_categoria = Rails.cache.fetch("productos_mas_recaudados", expires_in: 1.hour) do
-      Categoria.all.map do |categoria|
+      Categoria.includes(:productos)
+               .all
+               .map do |categoria|
         productos = categoria.productos
                             .joins(:compras)
                             .select('productos.*, SUM(compras.cantidad * productos.precio) as total_recaudado')

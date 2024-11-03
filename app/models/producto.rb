@@ -3,4 +3,5 @@ class Producto < ApplicationRecord
     has_many :compras
     has_many :clientes, through: :compras
     has_many :imagenes
+    belongs_to :administrador
 end
