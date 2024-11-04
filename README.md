@@ -1,24 +1,33 @@
-# README
+# Desafio SMS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requisitos
 
-Things you may want to cover:
+- Ruby >= 3.0 (tuve problemas en descargar la version 1.9.3 requerida)
 
-* Ruby version
+## Instalación
 
-* System dependencies
+1. **Instalar dependencias:**
+    ```bash
+    bundle install
+    ```
 
-* Configuration
+2. **Configurar credenciales:**
+    ```bash
+    EDITOR="vim" bin/rails credentials:edit
+    ```
+    Agregar:
+    ```yaml
+    jwt_secret_key: clave_secreta_de_prueba
+    ```
 
-* Database creation
+3. **Configurar la base de datos:**
+    ```bash
+    rails db:create
+    rails db:migrate
+    rails db:seed
+    ```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+4. **Iniciar el servidor:**
+    ```bash
+    rails s
+    ```

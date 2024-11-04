@@ -130,17 +130,17 @@ class ProductosController < ApplicationController
       end
 
       resultado = case buscar_compras_params[:granularidad]
-      when 'hora'
-        compras.group_by_hour(:created_at).sum(:cantidad)
-      when 'dia'
-        compras.group_by_day(:created_at).sum(:cantidad)
-      when 'semana'
-        compras.group_by_week(:created_at, format: '%Y-%m-%d').sum(:cantidad)
-      when 'año'
-        compras.group_by_year(:created_at).sum(:cantidad)
-      else
-        compras.group_by_day(:created_at).sum(:cantidad)
-      end
+        when 'hora'
+          compras.group_by_hour(:created_at).sum(:cantidad)
+        when 'dia'
+          compras.group_by_day(:created_at).sum(:cantidad)
+        when 'semana'
+          compras.group_by_week(:created_at, format: '%Y-%m-%d').sum(:cantidad)
+        when 'año'
+          compras.group_by_year(:created_at).sum(:cantidad)
+        else
+          compras.group_by_day(:created_at).sum(:cantidad)
+        end
 
       resultado.transform_keys(&:to_s)
     end
